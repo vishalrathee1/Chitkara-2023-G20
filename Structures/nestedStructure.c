@@ -1,20 +1,26 @@
 #include <stdio.h>
 #include<string.h>
 
-struct Car{
-	char company[50];
-	struct Engine{
-		int buildType ; //v8, v6
-		char EngineCompany[50];
-	};
+//separate Nesting
+struct Child{
+	char name[50];
+	int age;
 };
 
-int main()
-{
-	struct Car porsche1;
-	strcpy(porsche1.company, "Porsce");
-	
-	
+typedef struct Parent{
+	char name[50];
+	int age;
+	struct Child child1;
+} Parent;
 
+
+
+int main(){
+	Parent parent1 ;
+	strcpy(parent1.name, "Vikas");
+	parent1.age = 45;
+	strcpy(parent1.child1.name, "Rohit");
+	parent1.child1.age = 7;
+	printf("%s\n",parent1.child1.name );
 	return 0;
 }
